@@ -83,15 +83,21 @@ public class GUI extends javax.swing.JFrame implements Runnable {
                     writer(s, "connect");
                     writer(s, jComboBox1.getSelectedItem().toString());
                     connect = true;
-                    listner.start();
-                    synchContact.stop();
-                }else{
+                    if (listner.isAlive()) {
+                        listner.resume();
+                        System.out.println("listner resume");
+                    } else {
+                        listner.start();
+                        System.out.println("listner start");
+                    }
+                    synchContact.suspend();
+                } else {
                     writer(s, ">>end");
                     jButton2.setText("Connecté");
-                    connect=false;
-                    
+                    connect = false;
+
                     synchContact.resume();
-                    listner.interrupt();
+                    listner.suspend();
                 }
             }
         });
