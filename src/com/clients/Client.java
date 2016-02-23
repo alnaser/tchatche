@@ -22,7 +22,7 @@ public class Client {
         try {
             Socket s = new Socket("localhost", 9090);
             Thread.sleep(3000);
-            GUI g=new GUI(s, "alnaser 4");
+            GUI g=new GUI(s, "alnaser 2");
             new Thread(g).start();
         } catch (IOException ex) {
             System.out.println("probleme de socket client ");

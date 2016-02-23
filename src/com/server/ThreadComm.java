@@ -51,7 +51,7 @@ public class ThreadComm extends Thread {
 
         } catch (IOException ex) {
             System.out.println("erreur read");
-            return "null";
+            return null;
         }
     }
 
